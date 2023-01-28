@@ -15,3 +15,5 @@ class Config(object):
     CHANNEL4_NAME = os.environ.get("CHANNEL4_NAME")
     CHANNEL5_ID = os.environ.get("CHANNEL5_ID")
     CHANNEL5_NAME = os.environ.get("CHANNEL5_NAME")
+    CHANNEL_ID = os.environ.get("CHANNEL_ID")
+    CHANNEL_NAME = os.environ.get("CHANNEL_NAME")
