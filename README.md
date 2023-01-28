@@ -11,9 +11,9 @@ A Simple Bot which forwards Messages /media to multiple channels.
 
 ### Bot Commands
 ```
-/start - Start Message
-/help - Help Message
-
+/start - Check if 😊 I'm Alive 
+/help - How to Use Me ❓
+/about - About Me 
 /send - Send the replied message to the default channel(As a reply to any telegram message)
 /view - View the deault channel
 /channel1 - Set channel 1 as default forwaring channel (Optional)
