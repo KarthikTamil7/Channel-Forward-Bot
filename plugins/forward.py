@@ -141,6 +141,8 @@ async def channel5(bot, update):
         await a.delete()
 
 
+
+
 # *********************************** TO VIEW THE DEFAULT SENDING CHANNEL *********************************************#
 @Client.on_message(Filters.private & Filters.command(["view"]))
 async def view(bot, update):
