@@ -151,7 +151,6 @@ async def forward(bot, update, message):
         await a.delete()
         return
     channel_id = Config.CHANNEL_ID
-    channel_string = Config.CHANNEL_NAME
     if not channel_id:
         await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
         a = await message.send_message(chat_id=update.chat.id, text=Translation.INVALID_CHANNEL)
@@ -159,13 +158,12 @@ async def forward(bot, update, message):
         await a.delete()
     else:
         channel[id] = int(channel_id)
-        channel_name[id] = str(channel_string)
         await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
         a = await message.send_message(chat_id=update.chat.id,
                                    text=Translation.CHANNEL_CONFIRM.format(Config.CHANNEL_NAME))
     try:
         await message.forward(
-            chat_id=Config.CHANNEL_ID,
+            channel_id=Config.CHANNEL_ID,
             as_copy=True
         )
         await message.reply_text(
