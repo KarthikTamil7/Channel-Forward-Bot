@@ -17,3 +17,10 @@ async def help_me(bot, update):
     a = await bot.send_message(chat_id=update.chat.id, text=Translation.HELP, disable_web_page_preview=True)
     time.sleep(60)
     await a.delete()
+
+# ********************************************** About MESSAGE *********************************************************#
+@Client.on_message(Filters.private & Filters.command(["about"]))
+async def about(bot, update):
+    await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
+    await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
+    a = await bot.send_message(chat_id=update.chat.id, text=Translation.ABOUT, disable_web_page_preview=True)
