@@ -15,4 +15,4 @@ class Config(object):
     CHANNEL4_NAME = os.environ.get("CHANNEL4_NAME")
     CHANNEL5_ID = os.environ.get("CHANNEL5_ID")
     CHANNEL5_NAME = os.environ.get("CHANNEL5_NAME")
-    CHANNEL_ID = set(int(x) for x in os.environ.get("CHANNEL_ID").split())
+    CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1001342411240:-1001518309911"))
