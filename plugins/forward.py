@@ -9,7 +9,7 @@ else:
 from translation import Translation
 from pyrogram import Client, filters as Filters
 from bot import channel, channel_name
-
+import pyrogram
 
 # ******************************** CONFIGURING DEFAULT SENDING CHANNEL USING COMMANDS *********************************#
 @Client.on_message(Filters.private & Filters.command(["channel1"]))
@@ -142,7 +142,7 @@ async def channel5(bot, update):
 
 # ************************************** SEND A FILE TO THE CONFIGURED CHANNEL ****************************************#
 
-Client.on_message(Filters.private & Filters.text)
+@pyrogram.on_message(Filters.private & Filters.text)
 async def forward(bot, update, message):
     if update.from_user.id not in Config.AUTH_USERS:
         await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
