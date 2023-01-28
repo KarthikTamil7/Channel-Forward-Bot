@@ -21,3 +21,18 @@ class Translation(object):
                   "!</code> "
     INFO_CHANNEL = "A'm currently sending messages to:\n<b>{}</b>"
     NO_DEFAULT_SET = "⚠️ <b>Attention :</b>\n<code>No Default channels found! Set a channel first.</code>"
+      #About text
+    ABOUT = """
+<b>🤖 My Name : [UK Auto Forward Bot](https://t.me/UK_Auto_Forward_Bot)
+
+🧑🏻‍💻 Developer : [Karthik](https://t.me/HMTD_Karthik)
+
+📝 Language : Pyrogram
+
+📚 Framework : Python3
+
+📡 Hosted on : VPS
+
+📢 Updates Channel : [UK Movies Zone (Updates)](https://t.me/UK_Movies_Zone_Updates)
+
+🌐 Website : [www.HMTDMovies.tk](https://www.HMTDMovies.tk)</b>"""
