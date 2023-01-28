@@ -140,7 +140,47 @@ async def channel5(bot, update):
         time.sleep(5)
         await a.delete()
 
+# ************************************** SEND A FILE TO THE CONFIGURED CHANNEL ****************************************#
 
+Client.on_message(Filters.private & Filters.text)
+async def forward(bot, message):
+    if update.from_user.id not in Config.AUTH_USERS:
+        await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
+        a = await update.reply_text(text=Translation.NOT_AUTH_TXT)
+        time.sleep(5)
+        await a.delete()
+        return
+    channel_id = Config.CHANNEL_ID
+    channel_string = Config.CHANNEL_NAME
+    if not channel_id:
+        await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
+        a = await bot.send_message(chat_id=update.chat.id, text=Translation.INVALID_CHANNEL)
+        time.sleep(10)
+        await a.delete()
+    else:
+        channel[id] = int(channel_id)
+        channel_name[id] = str(channel_string)
+        await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
+        a = await bot.send_message(chat_id=update.chat.id,
+                                   text=Translation.CHANNEL_CONFIRM.format(Config.CHANNEL_NAME))
+    try:
+        await message.forward(
+            chat_id=Config.CHANNEL_ID,
+            as_copy=True
+        )
+        await message.reply_text(
+            text="<b>Forwaded Sucessfully</b>",
+            parse_mode='html',
+            quote=True
+        )
+    except:
+        await message.reply_text(
+            text="<b>Make Sure That I am Admin in Your Channel or Provided Channel ID is Correct.</b>",
+            parse_mode='html',
+            quote=True
+        )
+        time.sleep(5)
+        await a.delete()
 
 
 # *********************************** TO VIEW THE DEFAULT SENDING CHANNEL *********************************************#
