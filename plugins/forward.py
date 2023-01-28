@@ -143,7 +143,7 @@ async def channel5(bot, update):
 # ************************************** SEND A FILE TO THE CONFIGURED CHANNEL ****************************************#
 
 Client.on_message(Filters.private & Filters.text)
-async def forward(bot, message):
+async def forward(bot, update, message):
     if update.from_user.id not in Config.AUTH_USERS:
         await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
         a = await update.reply_text(text=Translation.NOT_AUTH_TXT)
@@ -154,14 +154,14 @@ async def forward(bot, message):
     channel_string = Config.CHANNEL_NAME
     if not channel_id:
         await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
-        a = await bot.send_message(chat_id=update.chat.id, text=Translation.INVALID_CHANNEL)
+        a = await message.send_message(chat_id=update.chat.id, text=Translation.INVALID_CHANNEL)
         time.sleep(10)
         await a.delete()
     else:
         channel[id] = int(channel_id)
         channel_name[id] = str(channel_string)
         await bot.delete_messages(chat_id=update.chat.id, message_ids=update.message_id)
-        a = await bot.send_message(chat_id=update.chat.id,
+        a = await message.send_message(chat_id=update.chat.id,
                                    text=Translation.CHANNEL_CONFIRM.format(Config.CHANNEL_NAME))
     try:
         await message.forward(
